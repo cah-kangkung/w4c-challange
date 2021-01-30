@@ -46,10 +46,10 @@
       <div class="modal-dialog modal-dialog-centered modal-sm">
          <div class="modal-content">
             <div class="modal-body">
-               <a class="btn btn-primary btn-block mb-3" href="{{ url('/trash/create')}}">
+               <a class="btn btn-primary btn-block mb-3" href="{{ url('/trashes/create')}}">
                   <h4>Add Trash</h4>
                </a>
-               <a class="btn btn-primary btn-block" href="{{ url('/category')}}">
+               <a class="btn btn-primary btn-block" href="{{ url('/categories')}}">
                   <h4>Manage Category</h4>
                </a>
             </div>

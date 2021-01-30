@@ -55,6 +55,8 @@ a:hover {
 
 .delete-button {
     color: #8f979b;
+    background-color: unset;
+    border: unset;
 }
 
 .btn-primary {

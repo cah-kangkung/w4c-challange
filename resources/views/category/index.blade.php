@@ -6,18 +6,30 @@
 @section('mainContent')
 <section class="trash-data">
    <div class="container">
-      <a href="{{ url('/category/create')}}" class="btn btn-primary btn-block btn-lg mb-3">Add Category</a>
 
+      @if (session('status'))
+      <div class="alert alert-warning alert-dismissible fade show" role="alert">
+         {{ session('status') }}
+         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+         </button>
+      </div>
+      @endif
+
+      <a href="{{ url('/categories/create')}}" class="btn btn-primary btn-block btn-lg mb-3">Add Category</a>
       @foreach ($categories as $category)
       <div class="card shadow-sm">
-         <div class="card-body">
-            <div class="more-info d-flex">
-               <h5 class="card-title">{{$category->category}}</h5>
-               <a href="" class="ml-auto delete-button">Delete</a>
-            </div>
+         <div class="card-body d-flex">
+            <h5 class="card-title">{{ $category->name }}</h5>
+            <form action="{{ url('categories/' . $category->id) }}" method="post" class="ml-auto">
+               @method('delete')
+               @csrf
+               <button type="submit" class="delete-button">Delete</button>
+            </form>
          </div>
       </div>
       @endforeach
+
    </div>
 </section>
 @endsection

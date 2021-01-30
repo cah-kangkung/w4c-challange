@@ -13,8 +13,10 @@
 
 Route::get('/', 'TrashController@index');
 
-Route::get('/trash', 'TrashController@index');
-Route::get('/trash/create', 'TrashController@create');
+Route::get('/trashes', 'TrashController@index');
+Route::get('/trashes/create', 'TrashController@create');
 
-Route::get('/category', 'CategoriesController@index');
-Route::get('/category/create', 'CategoriesController@create');
+Route::get('/categories', 'CategoryController@index');
+Route::get('/categories/create', 'CategoryController@create');
+Route::post('/categories', 'CategoryController@store');
+Route::delete('/categories/{category}', 'CategoryController@destroy');
