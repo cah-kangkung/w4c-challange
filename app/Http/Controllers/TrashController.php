@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Trash;
+use App\Category;
 use Illuminate\Http\Request;
 
 class TrashController extends Controller
@@ -13,7 +15,8 @@ class TrashController extends Controller
      */
     public function index()
     {
-        return view('trash/index');
+        $trashes = Trash::all();
+        return view('trash/index', ['trashes' => $trashes]);
     }
 
     /**
@@ -23,7 +26,8 @@ class TrashController extends Controller
      */
     public function create()
     {
-        return view('trash/create');
+        $categories = Category::all();
+        return view('trash/create', ['categories' => $categories]);
     }
 
     /**
@@ -34,16 +38,30 @@ class TrashController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // validate the form before storing
+        $request->validate([
+            'trashName' => 'required'
+        ]);
+
+        // find correspondent category
+        $categories = Category::all();
+        $category = $categories->find($request->category_id);
+
+        Trash::create([
+            'category_id' => $request->category_id,
+            'name' => $request->trashName,
+            'category_name' => $category->name,
+        ]);
+        return redirect('/trashes')->with('status', 'Trash Added!');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Trash  $trash
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Trash $trash)
     {
         //
     }
@@ -51,10 +69,10 @@ class TrashController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Trash  $trash
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Trash $trash)
     {
         //
     }
@@ -63,10 +81,10 @@ class TrashController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Trash  $trash
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Trash $trash)
     {
         //
     }
@@ -74,11 +92,12 @@ class TrashController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Trash  $trash
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Trash $trash)
     {
-        //
+        Trash::destroy($trash->id);
+        return redirect('/')->with('status', 'Trash Deleted!');
     }
 }

@@ -15,6 +15,8 @@ Route::get('/', 'TrashController@index');
 
 Route::get('/trashes', 'TrashController@index');
 Route::get('/trashes/create', 'TrashController@create');
+Route::post('/trashes', 'TrashController@store');
+Route::delete('/trashes/{trash}', 'TrashController@destroy');
 
 Route::get('/categories', 'CategoryController@index');
 Route::get('/categories/create', 'CategoryController@create');

@@ -6,33 +6,31 @@
 @section('mainContent')
 <section class="trash-data">
    <div class="container">
+
+      @if (session('status'))
+      <div class="alert alert-warning alert-dismissible fade show" role="alert">
+         {{ session('status') }}
+         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+         </button>
+      </div>
+      @endif
+
+      @foreach($trashes as $trash)
       <div class="card shadow-sm">
          <div class="card-body">
-            <h5 class="card-title">Trash Name</h5>
+            <h5 class="card-title">{{ $trash->name }}</h5>
             <div class="more-info d-flex">
-               <p class="card-text mb-0">Category</p>
-               <a href="" class="ml-auto delete-button">Delete</a>
+               <p class="">{{ $trash->category_name }}</p>
+               <form action="{{ url('trashes/' . $trash->id) }}" method="post" class="ml-auto">
+                  @method('delete')
+                  @csrf
+                  <button type="submit" class="delete-button">Delete</button>
+               </form>
             </div>
          </div>
       </div>
-      <div class="card shadow-sm">
-         <div class="card-body">
-            <h5 class="card-title">Trash Name</h5>
-            <div class="more-info d-flex">
-               <p class="card-text mb-0">Category</p>
-               <a href="" class="ml-auto delete-button">Delete</a>
-            </div>
-         </div>
-      </div>
-      <div class="card shadow-sm">
-         <div class="card-body">
-            <h5 class="card-title">Trash Name</h5>
-            <div class="more-info d-flex">
-               <p class="card-text mb-0">Category</p>
-               <a href="" class="ml-auto delete-button">Delete</a>
-            </div>
-         </div>
-      </div>
+      @endforeach
    </div>
 
    <!-- Button trigger modal -->

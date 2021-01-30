@@ -17,6 +17,7 @@ class CreateTrashesTable extends Migration
             $table->bigIncrements('id');
             $table->bigInteger('category_id');
             $table->string('name');
+            $table->string('category_name');
             $table->timestamps();
         });
     }
