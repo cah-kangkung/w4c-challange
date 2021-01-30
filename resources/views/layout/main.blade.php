@@ -18,7 +18,10 @@
 <body>
 
    <header>
-      <h5>@yield('header')</h5>
+      <div class="container header-container">
+         @yield('backArrow')
+         <h5>@yield('header')</h5>
+      </div>
    </header>
 
    @yield('mainContent')

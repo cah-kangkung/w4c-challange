@@ -27,7 +27,11 @@ class TrashController extends Controller
     public function create()
     {
         $categories = Category::all();
-        return view('trash/create', ['categories' => $categories]);
+        if ($categories->count() > 0) {
+            return view('trash/create', ['categories' => $categories]);
+        } else {
+            return redirect('/trashes')->with('status', 'You need to add category first!');
+        }
     }
 
     /**

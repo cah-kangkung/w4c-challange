@@ -3,6 +3,12 @@
 @section('title', 'Add Category')
 @section('header', 'Add Category')
 
+@section('backArrow')
+<a href="{{ url('/categories') }}" class="back-button">
+   <i class="arrow left"></i>
+</a>
+@endsection
+
 @section('mainContent')
 <section class="add-trash">
    <div class="container">

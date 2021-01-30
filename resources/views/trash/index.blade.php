@@ -16,6 +16,10 @@
       </div>
       @endif
 
+      @if (count($trashes) === 0)
+      <h4 class="text-center mt-5">You don't have any trash. Add them!</h4>
+      @endif
+
       @foreach($trashes as $trash)
       <div class="card shadow-sm">
          <div class="card-body">

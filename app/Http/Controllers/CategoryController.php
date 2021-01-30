@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Category;
+use App\Trash;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -87,6 +88,7 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
+        Trash::where('category_id', $category->id)->delete();
         Category::destroy($category->id);
         return redirect('/categories')->with('status', 'Category Deleted!');
     }
