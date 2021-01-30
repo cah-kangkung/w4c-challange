@@ -12,7 +12,9 @@
 */
 
 Route::get('/', 'TrashController@index');
+
 Route::get('/trash', 'TrashController@index');
 Route::get('/trash/create', 'TrashController@create');
-Route::get('/category', 'CategoryController@index');
-Route::get('/category/create', 'CategoryController@create');
+
+Route::get('/category', 'CategoriesController@index');
+Route::get('/category/create', 'CategoriesController@create');
