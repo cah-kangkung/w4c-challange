@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class TrashController extends Controller
+class CategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +13,7 @@ class TrashController extends Controller
      */
     public function index()
     {
-        return view('trash/index');
+        return view('category/index');
     }
 
     /**
@@ -23,7 +23,7 @@ class TrashController extends Controller
      */
     public function create()
     {
-        return view('trash/create');
+        return view('category/create');
     }
 
     /**

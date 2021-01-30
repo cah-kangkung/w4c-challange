@@ -1,6 +1,6 @@
 @extends('layout/main')
 
-@section('title', 'Manage Trash')
+@section('title', 'W4C Web Engineer Challange')
 @section('header', 'Trash Data')
 
 @section('mainContent')
@@ -9,19 +9,28 @@
       <div class="card shadow-sm">
          <div class="card-body">
             <h5 class="card-title">Trash Name</h5>
-            <p class="card-text">Category</p>
+            <div class="more-info d-flex">
+               <p class="card-text mb-0">Category</p>
+               <a href="" class="ml-auto delete-button">Delete</a>
+            </div>
          </div>
       </div>
       <div class="card shadow-sm">
          <div class="card-body">
             <h5 class="card-title">Trash Name</h5>
-            <p class="card-text">Category</p>
+            <div class="more-info d-flex">
+               <p class="card-text mb-0">Category</p>
+               <a href="" class="ml-auto delete-button">Delete</a>
+            </div>
          </div>
       </div>
       <div class="card shadow-sm">
          <div class="card-body">
             <h5 class="card-title">Trash Name</h5>
-            <p class="card-text">Category</p>
+            <div class="more-info d-flex">
+               <p class="card-text mb-0">Category</p>
+               <a href="" class="ml-auto delete-button">Delete</a>
+            </div>
          </div>
       </div>
    </div>
@@ -36,12 +45,12 @@
    <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="addModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered modal-sm">
          <div class="modal-content">
-            <div class="modal-body add-menu">
-               <a class="btn btn-primary btn-block menu-item mb-3" href="">
+            <div class="modal-body">
+               <a class="btn btn-primary btn-block mb-3" href="{{ url('/trash/create')}}">
                   <h4>Add Trash</h4>
                </a>
-               <a class="btn btn-primary btn-block menu-item" href="">
-                  <h4>Add Category</h4>
+               <a class="btn btn-primary btn-block" href="{{ url('/category')}}">
+                  <h4>Manage Category</h4>
                </a>
             </div>
 

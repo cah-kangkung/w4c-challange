@@ -19,6 +19,8 @@ section.trash-data {
 
 a:hover {
     cursor: pointer;
+    color: red;
+    text-decoration: unset;
 }
 
 .card {
@@ -51,6 +53,10 @@ a:hover {
     transform: rotate(90deg);
 }
 
-.menu-item {
+.delete-button {
+    color: #8f979b;
+}
+
+.btn-primary {
     background-color: #30aee4;
 }
